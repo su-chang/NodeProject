@@ -1,11 +1,11 @@
-#!/usr/bin/env node
+#!/usr/bin/env node  //表明是node可执行文件
 
 /**
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('blog:server');
+var app = require('../app'); //引入上面导出的app实例
+var debug = require('debug')('blog:server'); //引入debug模块，打印调试日志
 var http = require('http');
 
 /**
