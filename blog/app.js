@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var settings = require('./settings');
+var flash = require('connect-flash');
 
 //一下这两个模块实现了将会话信息存储到MongoDB中
 var session = require('express-session');
@@ -20,8 +21,10 @@ var app = express();
 app.set('views', path.join(__dirname, 'views')); //__dirname为全局变量，存放当前执行脚本所在目录
 app.set('view engine', 'ejs'); //设置模板引擎为ejs
 
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(flash());
 app.use(logger('dev')); //加载日志中间件
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
