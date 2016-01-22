@@ -6,6 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+var settings = require('./settings');
+
+//一下这两个模块实现了将会话信息存储到MongoDB中
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+
 var users = require('./routes/users');
 
 var app = express();
@@ -21,6 +27,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'))); //将静态文件目录设置为public文件夹
+
+
+app.use(session({
+  secret: settings.cookieSecret,
+  key: settings.db, //cookie name
+  cookie: {maxAge: 1000 * 60 * 60 * 24 * 30}, //30 days
+  store: new MongoStore({
+    db: settings.db,
+    host: settings.host,
+    port: settings.port
+  })
+}));
 
 //路由控制器
 routes(app);
