@@ -34,7 +34,7 @@ nav{
 nav a{
 	display: block;
 	text-decoration: none;
-	padding: .7em, 1em;
+	padding: .7em 1em;
 	color: #000000;
 }
 
@@ -50,7 +50,7 @@ article{
 }
 
 article a{
-	color: #dd0000;
+	color: #ff0000;
 	text-decoration: none;
 }
 

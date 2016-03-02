@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+var index = require('./routes/index');
 var settings = require('./settings');
 var flash = require('connect-flash');
 
@@ -44,7 +44,7 @@ app.use(session({
 }));
 
 //路由控制器
-routes(app);
+index(app);
 users(app);
 // app.use('/', routes);
 // app.use('/users', users);
