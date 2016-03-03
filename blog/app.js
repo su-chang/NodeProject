@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var multer = require('multer');
 
 var index = require('./routes/index');
 var settings = require('./settings');
@@ -39,6 +40,15 @@ app.use(session({
     host: settings.host,
     port: settings.port
   })
+}));
+
+app.use(multer({
+  // 文件所在目录
+  dest: './public/images',
+  // 修改上传后的文件名
+  rename: function (fieldname, filename) {
+    return filename;
+  }
 }));
 
 //路由控制器
