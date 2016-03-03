@@ -13,8 +13,6 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
-var users = require('./routes/users');
-
 var app = express();
 
 // view engine setup
@@ -45,7 +43,6 @@ app.use(session({
 
 //路由控制器
 index(app);
-users(app);
 // app.use('/', routes);
 // app.use('/users', users);
 
